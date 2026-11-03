@@ -30,3 +30,18 @@ CASE 문:
        ELSE default_result 
 END 이런식으로 검색문, 중첩문
 NULL 관련 함수: NVL, COALESCE, NULLIF, IFNULL, ISNULL
+
+NATURAL JOIN
+형식: SELECT
+        *
+ FROM
+     테이블A
+     NATURAL JOIN 테이블B;
+USING 조건절:
+SELECT *
+FROM
+  테이블A
+  JOIN 테이블B
+    USING(공통 칼럼);
+ON 조건절 / USING 과 달리 조인된 테이블의 칼럼이 그대로 결과에 포함된다.
+CROSS JOIN : 두 테이블의 카테시안 곱을 생성한다./ 
