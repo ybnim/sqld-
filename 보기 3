@@ -1,0 +1,17 @@
+ 셀프 조인: 동일한 테이블을 두 번 이상 참조하여 서로 다른 별칭을 사용해 수행한다.
+계층형 질의: 트리 구조 또는 계층 구조를 검색하는 방법이다.
+SELECT
+  칼럼1
+  ,칼럼2
+  ,칼럼3
+  ,...
+FROM
+  테이블명
+START WITH
+  조건#1
+CONNECT BY [PRIOR]
+  조건#2
+ORDER SIBLINGS BY
+  칼럼명 [ASC | DESC];
+SYS_CONNECT_BY_PATH(ENAME, '/') AS PATH -- 계층 구조 내의 각 노드 경로를 문자열로 반환하는 함수/ CONNECT_BY_ROOT ENAME AS root_manager-- 현재 전개할 데이터의 루트 데이터를 표시한다.
+ORDER SIBLINGS BY: 형제 노드를 ENAME 기준으로 정렬하여 계층 구조를 조회/ 
