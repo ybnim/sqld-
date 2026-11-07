@@ -15,3 +15,32 @@ ORDER SIBLINGS BY
   칼럼명 [ASC | DESC];
 SYS_CONNECT_BY_PATH(ENAME, '/') AS PATH -- 계층 구조 내의 각 노드 경로를 문자열로 반환하는 함수/ CONNECT_BY_ROOT ENAME AS root_manager-- 현재 전개할 데이터의 루트 데이터를 표시한다.
 ORDER SIBLINGS BY: 형제 노드를 ENAME 기준으로 정렬하여 계층 구조를 조회/ 
+
+정규 표현식: 구성요소--> 메타 문자, 수량자, 경계 지정자
+POSIX 연산자: REGEXP_SUBSTR함수 .(dot 연산자), |(or 연산자), \(backslash 연산자)
+REGEXP_SUBSTR('ac', 'ab*c') AS C1
+REGEXP_SUBSTR('abc', 'ab*c') AS C2
+중괄호 수량자 예시
+REGEXP_SUBSTR('ac', 'a{3}') AS C1
+괄호 연산자 () 예시 --> REGEXP_SUBSTR('ababab', '(ab)+') AS C1 = ababab // REGEXP_SUBSTR('abcdabcd', '(ab)(cd)\1\2') AS C1 = abcdabcd
+ 문자 리스트 연산자// 
+PERL 정규표현식 연산자.. \d, \D, \w, \W 등등/ REGEXP_LIKE 조건: 
+ REGEXP_LIKE 조건: 
+SELECT
+ ENAME
+ ,JOB
+FROM
+ EMP
+WHERE
+  REGEXP_LIKE(ENAME, 'smith', 'i');
+REGEXP_REPLACE 함수:
+SELECT
+ REGEXP_REPLACE('Address 1234, ZIP 56789', '\d', '') AS RESULT
+FROM
+ DUAL;
+REGEXP_INSTR
+ (
+ source_string
+ ,pattern[, position[, occurrence[, return_option[, match_parameter]]]]
+ )
+REGEXP_COUNT: 문자열에서 정규표현식을 사용해 특정 패턴이 몇 번 나타나는지 계산하는데 사용한다.
